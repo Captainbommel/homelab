@@ -1,0 +1,21 @@
+name: librespeed
+
+services:
+  speedtest:
+    container_name: speedtest
+    image: ghcr.io/librespeed/speedtest:latest
+    restart: always
+    environment:
+      MODE: standalone # the speed from instance to client will be mesured
+      TITLE: "Red Creek Speed"
+      TELEMETRY: "false"
+      DISABLE_IPINFO: "true"
+      #ENABLE_ID_OBFUSCATION: "false"
+      #REDACT_IP_ADDRESSES: "false"
+      #PASSWORD:
+      #EMAIL:
+      #IPINFO_APIKEY: "your api key"
+      #DISTANCE: "km"
+      #WEBPORT: 8080
+    ports:
+      - "8585:8080"

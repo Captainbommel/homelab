@@ -1,0 +1,24 @@
+# environment variables:
+# GOTIFY_URL 
+# GOTIFY_TOKEN
+# GOTIFY_HOSTNAME
+# CRON_SCHEDULE (default: "0 0 * * * *")
+
+name: watchtower
+
+services:
+    watchtower:
+        image: containrrr/watchtower
+        container_name: watchtower
+        restart: unless-stopped
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            # - /root/.docker/config.json:/config.json
+        environment:
+            - TZ=Europe/Berlin
+            - WATCHTOWER_NOTIFICATIONS=gotify
+            - WATCHTOWER_NOTIFICATION_GOTIFY_URL=${GOTIFY_URL}
+            - WATCHTOWER_NOTIFICATION_GOTIFY_TOKEN=${GOTIFY_TOKEN}
+            - WATCHTOWER_NOTIFICATIONS_HOSTNAME=${GOTIFY_HOSTNAME}
+            - WATCHTOWER_MONITOR_ONLY=true
+            - WATCHTOWER_SCHEDULE={CRON_SCHEDULE:-0 0 4 * * *}

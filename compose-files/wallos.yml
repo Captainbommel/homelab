@@ -1,0 +1,14 @@
+name: wallos
+
+services:
+  wallos:
+    image: bellamy/wallos:latest
+    container_name: wallos
+    restart: unless-stopped
+    ports:
+      - "80:80/tcp"
+    volumes:
+      - "./db:/var/www/html/db"
+      - "./logos:/var/www/html/images/uploads/logos"
+    environment:
+      TZ: "Europe/Berlin"

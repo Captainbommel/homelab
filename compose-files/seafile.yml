@@ -1,0 +1,55 @@
+# environment variables:
+# DB_HOST
+# DB_ROOT_PASSWORD - root password of MySQL service
+# SEAFILE_ADMIN_EMAIL - Specifies Seafile admin user, default is 'me@example.com'
+# SEAFILE_ADMIN_PASSWORD - Specifies Seafile admin password, default is 'asecret'
+
+name: seafile
+
+services:
+  db:
+    image: mariadb:10.11
+    container_name: seafile-mysql
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD} 
+      - MYSQL_LOG_CONSOLE=true
+      - MARIADB_AUTO_UPGRADE=1
+    volumes:
+      - /opt/seafile-mysql/db:/var/lib/mysql  # path to MySQL data persistent store
+    networks:
+      - seafile-net
+
+  memcached:
+    image: memcached:1.6.18
+    container_name: seafile-memcached
+    restart: unless-stopped
+    entrypoint: memcached -m 256
+    networks:
+      - seafile-net
+          
+  seafile:
+    image: seafileltd/seafile-mc:latest
+    container_name: seafile
+    restart: unless-stopped
+    ports:
+      - "80:80"
+#     - "443:443"                   # If https is enabled, cancel the comment.
+    volumes:
+      - /opt/seafile-data:/shared   # Requested, specifies the path to Seafile data persistent store.
+    environment:
+      - TIME_ZONE=Europe/Berlin
+      - DB_HOST=db
+      - DB_ROOT_PASSWD=${DB_ROOT_PASSWORD}
+      - SEAFILE_ADMIN_EMAIL=${SEAFILE_ADMIN_EMAIL}
+      - SEAFILE_ADMIN_PASSWORD=${SEAFILE_ADMIN_PASSWORD}
+      - SEAFILE_SERVER_LETSENCRYPT=false         # Whether to use https or not.
+      - SEAFILE_SERVER_HOSTNAME=docs.seafile.com # Specifies your host name if https is enabled.
+    depends_on:
+      - db
+      - memcached
+    networks:
+      - seafile-net
+
+networks:
+  seafile-net:

@@ -1,0 +1,20 @@
+name: mediatracker
+
+services:
+    mediatracker:
+        image: "bonukai/mediatracker:0.2.9"
+        container_name: "mediatracker"
+        restart: "unless-stopped"
+        volumes:
+            - "/home/lars/.config/mediatracker/data:/storage"
+            - "mediatracker_assets:/assets"
+        environment:
+            - "PUID=1000"
+            - "PGID=1000"
+            - "TZ=Europe/Berlin"
+            - "SERVER_LANG=de"
+            - "TMDB_LANG=de"
+            - "AUDIBLE_LANG=de"
+
+volumes:
+  mediatracker_assets:

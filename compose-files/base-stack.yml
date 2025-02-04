@@ -1,0 +1,71 @@
+name: homelab
+
+services:
+    cloudflared:
+        image: cloudflare/cloudflared:latest
+        container_name: cloudflared
+        command: tunnel --no-autoupdate run --token ${CF_API_TOKEN}
+
+    portainer:
+        image: "portainer/portainer:latest"
+        container_name: "portainer"
+        command: "-H unix:///var/run/docker.sock"
+        restart: "unless-stopped"
+        environment:
+            - "PUID=1000"
+            - "PGID=1000"
+            - "TZ=Europe/Berlin"
+        volumes:
+            - "/var/run/docker.sock:/var/run/docker.sock"
+            - "portainer_data:/data"
+
+    uptime-kuma:
+        image: "louislam/uptime-kuma:1"
+        container_name: "uptime-kuma"
+        restart: "unless-stopped"
+        volumes:
+            - "uptime-kuma:/app/data"
+            - "/var/run/docker.sock:/var/run/docker.sock"
+        environment:
+            - "DOCKER_HOST=unix:///var/run/docker.sock"
+            - "TZ=Europe/Berlin"
+            
+    gotify:
+        image: "gotify/server"
+        container_name: "gotify"
+        restart: "unless-stopped"
+        environment:
+            - "GOTIFY_DEFAULTUSER_PASS=admin"
+            - "TZ=Europe/Berlin"
+        volumes:
+            - "./gotify_data:/app/data"
+
+    mediatracker:
+        image: "bonukai/mediatracker:0.2.9"
+        container_name: "mediatracker"
+        restart: "unless-stopped"
+        volumes:
+            - "/home/lars/.config/mediatracker/data:/storage"
+            - "mediatracker_assets:/assets"
+        environment:
+            - "PUID=1000"
+            - "PGID=1000"
+            - "TZ=Europe/Berlin"
+            - "SERVER_LANG=de"
+            - "TMDB_LANG=de"
+            - "AUDIBLE_LANG=de"
+
+    wallos:
+        image: bellamy/wallos:latest
+        container_name: wallos
+        restart: unless-stopped
+        volumes:
+            - "./db:/var/www/html/db"
+            - "./logos:/var/www/html/images/uploads/logos"
+        environment:
+            TZ: "Europe/Berlin"
+
+volumes:
+  uptime-kuma:
+  portainer_data:
+  mediatracker_assets:
