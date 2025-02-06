@@ -1,0 +1,40 @@
+# environment variables:
+# DUMB_PIN
+
+name: "dumb-stack"
+
+services:
+    dumbdo:
+        image: dumbwareio/dumbdo
+        container_name: dumbdo
+        ports:
+          - 3001:3000
+        volumes:
+            - /home/user/dumbdata:/app/data
+        environment:
+            - DUMBDO_PIN=${DUMB_PIN}
+
+    dumbkan:
+        image: dumbwareio/dumbkan
+        container_name: dumbkan
+        ports:
+          - 3002:3000
+        volumes:
+            - /home/user/dumbdata:/app/data
+        env_file:
+            - .env
+        environment:
+            - DUMBKAN_PIN=${DUMB_PIN}
+
+    dumbdrop:
+        image: dumbwareio/dumbdrop
+        container_name: dumbdrop
+        ports:
+          - 3003:3000
+        volumes:
+            - /home/lars/navidrome/music/mp3:/app/uploads
+        environment:
+            - DUMBDROP_TITLE=DumbMusicDrop
+            - MAX_FILE_SIZE=1024
+            - DUMBDROP_PIN= ${DUMB_PIN}
+            - AUTO_UPLOAD=false
