@@ -38,6 +38,10 @@
         href: {}
         description: subscription tracker
         icon: wallos.png
+    - Mealie:
+         href: {}
+         description: manage your favorite recipes
+         icon: mealie.png
     - Dumbdrop:
         href: {}
         description: music fileupload to navidrome

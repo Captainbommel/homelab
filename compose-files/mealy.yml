@@ -5,7 +5,7 @@ services:
     image: ghcr.io/mealie-recipes/mealie:v2.6.0
     container_name: mealie
 
-    restart: always
+    restart: uless-stopped
     ports:
         - "9925:9000" 
     deploy:
@@ -14,8 +14,10 @@ services:
           memory: 1000M  
     volumes:
       - mealie-data:/app/data/
+    networks:
+      - homelab_default
     environment:
-      ALLOW_SIGNUP: "false"
+      ALLOW_SIGNUP: "true"
       PUID: 1000
       PGID: 1000
       TZ: Europe/Berlin
@@ -23,3 +25,7 @@ services:
 
 volumes:
   mealie-data:
+
+networks:
+  homelab_default:
+    external: true
