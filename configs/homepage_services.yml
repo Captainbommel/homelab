@@ -1,0 +1,44 @@
+- Media:
+    - Mediatracker:
+        href: {}
+        description: track movies, tv, books and more
+    - Navidrome:
+        href: {}
+        description: music streaming service
+        icon: navidrome.png
+
+- Monitoring:
+    - Uptime Kuma:
+        href: {}
+        description: service monitoring
+        icon: uptime-kuma.png
+    - Gotify:
+        href: {}
+        description: notification service
+        icon: gotify.png
+    - Watchtower:
+        description: automatic image updates
+        icon: watchtower.png
+    - Portainer:
+        href: {}
+        description: container management
+        icon: portainer.png
+        widget:
+          type: portainer
+          url: {}
+          env: 1
+          key: {}
+
+- Services:
+    - SearXNG:
+        href: {}
+        description: a private search engine
+        icon: searxng.png
+    - Wallos:
+        href: {}
+        description: subscription tracker
+        icon: wallos.png
+    - Dumbdrop:
+        href: {}
+        description: music fileupload to navidrome
+        icon: files.png

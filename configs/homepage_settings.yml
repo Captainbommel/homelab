@@ -1,0 +1,29 @@
+title: Homelab Dashboard
+
+headerStyle: clean
+
+color: fuchsia
+background:
+  image: /images/japanese_castle.jpg
+  brightness: 50
+
+layout:
+  Media:
+    style: row
+    columns: 2
+  Services:
+    style: row
+    columns: 3
+  Monitoring:
+    style: row
+    colums: 4
+
+hideVersion: true
+
+target: _blank
+statusStyle: "dot"
+
+
+
+
+

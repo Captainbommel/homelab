@@ -1,0 +1,24 @@
+- resources:
+    cpu: true
+    memory: true
+    disk: /
+
+- search:
+   provider: duckduckgo
+   target: _blank
+   showSearchSuggestions: true
+
+#- search:
+#   provider: custom
+#   url: {}
+#   target: _blank
+
+- openmeteo:
+    label: {}
+    latitude: {}
+    longitude: {}
+    timezone: Europe/Berlin
+    units: metric
+    cache: 5 # to stay within limits
+    format:
+      maximumFractionDigits: 1
