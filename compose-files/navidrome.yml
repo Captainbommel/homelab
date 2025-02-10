@@ -11,6 +11,8 @@ services:
       ND_SCANSCHEDULE: 1h
       ND_LOGLEVEL: info  
       ND_SESSIONTIMEOUT: 24h
+      ND_DEFAULTTHEME: "Catpuccin Macchiato"
+      #ND_JUKEBOX_ENABLED: true # not supported in the web UI yet
     volumes:
       - "/home/user/navidrome/data:/data"
       - "/home/user/navidrome/music:/music:ro" # :ro for read-only
