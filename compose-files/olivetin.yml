@@ -1,0 +1,15 @@
+services:
+  olivetin:
+    container_name: olivetin
+    image: jamesread/olivetin
+    volumes:
+      - /home/user/olivetin:/config # make sure the config.yaml exists
+    ports:
+      - "1337:1337" # should run behind tunnel or reverse proxy
+    restart: unless-stopped
+    networks:
+      - "homelab_default"
+
+networks:
+  homelab_default:
+    external: true

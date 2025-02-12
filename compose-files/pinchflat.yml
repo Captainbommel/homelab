@@ -1,0 +1,12 @@
+name: pinchflat
+
+services:
+  pinchflat:
+    image: ghcr.io/kieraneglin/pinchflat:latest
+    environment:
+      - TZ=Europe/Berlin
+    ports:
+      - '8945:8945'
+    volumes:
+      - /home/user/pinchflat/config:/config
+      - /home/user/pinchflat/downloads:/downloads
