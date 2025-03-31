@@ -30,7 +30,7 @@ services:
         environment:
             - "DOCKER_HOST=unix:///var/run/docker.sock"
             - "TZ=Europe/Berlin"
-            
+   
     gotify:
         image: "gotify/server"
         container_name: "gotify"
