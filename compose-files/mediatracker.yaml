@@ -1,3 +1,7 @@
+# Environment Variables
+#
+# MEDIATRACKER_DATA_PATH
+
 name: mediatracker
 
 services:
@@ -6,7 +10,7 @@ services:
         container_name: "mediatracker"
         restart: "unless-stopped"
         volumes:
-            - "/home/lars/.config/mediatracker/data:/storage"
+            - "${MEDIATRACKER_DATA_PATH}:/storage"
             - "mediatracker_assets:/assets"
         environment:
             - "PUID=1000"
