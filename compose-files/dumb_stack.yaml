@@ -1,5 +1,6 @@
 # environment variables:
 # DUMB_PIN
+# DUMBDROP_UPLOAD_PATH
 
 name: "dumb-stack"
 
@@ -32,7 +33,7 @@ services:
         ports:
           - 3003:3000
         volumes:
-            - /home/lars/navidrome/music/mp3:/app/uploads
+            - ${DUMBDROP_UPLOAD_PATH}:/app/uploads
         environment:
             - DUMBDROP_TITLE=DumbMusicDrop
             - MAX_FILE_SIZE=1024
