@@ -1,4 +1,5 @@
-# environment variables:
+# Environment Variables
+#
 # SEARXNG_BASE_URL
 # SEARXNG_UWSGI_WORKERS (default: 4)
 # SEARXNG_UWSGI_THREADS (default: 4)

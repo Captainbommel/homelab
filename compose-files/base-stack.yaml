@@ -1,3 +1,8 @@
+# Environment Variables
+#
+# CF_API_TOKEN
+# MEDIATRACKER_DATA_PATH
+
 name: homelab
 
 services:
@@ -36,7 +41,7 @@ services:
         container_name: "gotify"
         restart: "unless-stopped"
         environment:
-            - "GOTIFY_DEFAULTUSER_PASS=admin" # Change after first login
+            - "GOTIFY_DEFAULTUSER_PASS=admin" # change after first login
             - "TZ=Europe/Berlin"
         volumes:
             - "./gotify_data:/app/data"

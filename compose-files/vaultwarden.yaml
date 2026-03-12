@@ -1,7 +1,8 @@
 # wont work without https
 
-# environment variables:
-# - HOST 
+# Environment Variables
+#
+# HOST 
 
 name: vaultwarden
 

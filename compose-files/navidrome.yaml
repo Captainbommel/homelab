@@ -1,13 +1,12 @@
 services:
   navidrome:
     image: deluan/navidrome:latest
-    #user: 1000:1000 # should be owner of volumes
+    user: 1000:1000 # should be owner of volumes
     container_name: navidrome
     restart: unless-stopped
     environment:
-      ND_PORT: "4533" # Http port
+      ND_PORT: "4533" # http port
       ND_MUSICFOLDER: "./music"
-      # Optional: put your config options customization here. Examples:
       ND_SCANSCHEDULE: 1h
       ND_LOGLEVEL: info  
       ND_SESSIONTIMEOUT: 24h
@@ -15,7 +14,7 @@ services:
       #ND_JUKEBOX_ENABLED: true # not supported in the web UI yet
     volumes:
       - "/home/user/navidrome/data:/data"
-      - "/home/user/navidrome/music:/music:ro" # :ro for read-only
+      - "/home/user/navidrome/music:/music:ro"
     networks:
       - "homelab_default"
       

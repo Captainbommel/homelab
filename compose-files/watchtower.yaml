@@ -1,5 +1,6 @@
-# environment variables:
-# GOTIFY_URL 
+# Environment Variables
+#
+# GOTIFY_URL
 # GOTIFY_TOKEN
 # GOTIFY_HOSTNAME
 # CRON_SCHEDULE (default: "0 0 * * * *")

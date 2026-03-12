@@ -5,6 +5,6 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - /home/user/homepage/config:/app/config # Make sure your local config directory exists
+      - /home/user/homepage/config:/app/config # make sure your local config directory exists
       - /home/user/homepage/images:/app/public/images
-      - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations
+      - /var/run/docker.sock:/var/run/docker.sock # for docker integrations
