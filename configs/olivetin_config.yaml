@@ -4,5 +4,5 @@ actions:
   - title: "Hello world!"
     shell: echo 'Hello World!'
 
-  - title: "Fix Pironman Dashboard" #! not github safe?
+  - title: "Fix Pironman Dashboard"
     shell: service pironman5 stop && rm -fr /var/lib/influxdb/data/pironman5 && rm -fr /var/lib/influxdb/wal/pironman5 && service pironman5 start
